@@ -4,13 +4,13 @@ export const users = sqliteTable("users", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
-  // Basic RBAC: single role field with sensible default
   role: text("role").default("user").notNull(),
   emailVerified: integer("email_verified", { mode: "boolean" })
     .default(false)
     .notNull(),
   image: text("image"),
-  // Ban management fields
+  bio: text("bio"),
+  location: text("location"),
   banned: integer("banned", { mode: "boolean" }).default(false).notNull(),
   banReason: text("ban_reason"),
   banExpires: integer("ban_expires", { mode: "timestamp" }),
